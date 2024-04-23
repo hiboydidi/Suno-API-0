@@ -9,10 +9,12 @@ services:
       service:
         name: serverless-devs-application
       function:
-        name: Suno-API-0-s79g
+        name: Suno-API-0-j7tb
         description: Initialize
-        runtime: custom
+        runtime: custom.debian10
         environmentVariables:
+          PATH: >-
+            /var/fc/lang/python3.10/bin:/usr/local/bin/apache-maven/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ruby/bin:/opt/bin:/code:/code/bin
           PYTHONPATH: /opt/python:/code
           LD_LIBRARY_PATH: >-
             /code:/code/lib:/usr/local/lib:/opt/lib:/opt/php8.1/lib:/opt/php8.0/lib:/opt/php7.2/lib
@@ -23,10 +25,10 @@ services:
         timeout: 60
         codeUri: ./
         diskSize: 512
-        caPort: 9000
+        caPort: 8000
         customRuntimeConfig:
           command:
-            - python
+            - python3
           args:
             - app.py
       triggers:
